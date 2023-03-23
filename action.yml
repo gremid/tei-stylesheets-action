@@ -1,0 +1,12 @@
+name: 'TEI Stylesheets'
+description: 'Run TEI stylesheets for document conversion, i. e. generating RELAX NG schemas from ODD sources'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}
