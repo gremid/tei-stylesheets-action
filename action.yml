@@ -11,6 +11,9 @@ inputs:
   target:
     description: 'Path of target file storing the conversion result'
     required: true
+  lang:
+    description: 'language for localization, i.e. "de"'
+    required: false
   odd2odd:
     description: 'whether ODD expansion shall be performed'
     required: true

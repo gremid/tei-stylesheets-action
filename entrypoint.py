@@ -6,6 +6,7 @@ from sys import argv, stderr, exit
 cmd = environ.get('INPUT_TRANSFORM')
 source = environ.get('INPUT_SOURCE')
 target = environ.get('INPUT_TARGET')
+lang = environ.get('INPUT_LANG')
 odd2odd = environ.get('INPUT_ODD2ODD')
 
 args = argv[1:]
@@ -20,6 +21,9 @@ if cmd is None:
 
 if (odd2odd is not None) and (odd2odd.lower() in ['yes', 'true', '1']):
     args.append('--odd')
+
+if lang is not None:
+    args.append(f'--lang={lang}')
 
 if source is not None:
     args.append(source)
