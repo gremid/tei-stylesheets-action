@@ -3,10 +3,10 @@
 from os import environ, execve
 from sys import argv, stderr, exit
 
-cmd = environ.get('INPUT-TRANSFORM')
-source = environ.get('INPUT-SOURCE')
-target = environ.get('INPUT-TARGET')
-odd2odd = environ.get('INPUT-ODD2ODD')
+cmd = environ.get('INPUT_TRANSFORM')
+source = environ.get('INPUT_SOURCE')
+target = environ.get('INPUT_TARGET')
+odd2odd = environ.get('INPUT_ODD2ODD')
 
 args = argv[1:]
 
