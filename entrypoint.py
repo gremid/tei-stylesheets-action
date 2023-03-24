@@ -3,13 +3,29 @@
 from os import environ, execve
 from sys import argv, stderr, exit
 
+cmd = environ.get('INPUT-TRANSFORM')
+source = environ.get('INPUT-SOURCE')
+target = environ.get('INPUT-TARGET')
+odd2odd = environ.get('INPUT-ODD2ODD')
+
 args = argv[1:]
 
-if len(args) == 0:
-    stderr.write('Missing args\n')
+if cmd is None and len(args) > 1:
+    cmd = args[0]
+    args = args[1:]
+
+if cmd is None:
+    stderr.write('Missing transform command\n')
     exit(1)
 
-cmd = '/stylesheets/bin/' + args[0]
-args = [cmd] + args[1:]
+if (odd2odd is not None) and (odd2odd.lower() in ['yes', 'true', '1']):
+    args.append('--odd')
 
+if source is not None:
+    args.append(source)
+if target is not None:
+    args.append(target)
+
+cmd = '/stylesheets/bin/' + cmd
+args = [cmd] + args
 execve(cmd, args, environ)

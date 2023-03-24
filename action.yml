@@ -1,12 +1,20 @@
 name: 'TEI Stylesheets'
 description: 'Run TEI stylesheets for document conversion, i. e. generating RELAX NG schemas from ODD sources'
+author: 'Gregor Middell'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  transform:
+    description: 'Type of conversion to perform, i. e. "teitorelaxng"'
     required: true
-    default: 'World'
+  source:
+    description: 'Path of source file to convert'
+    required: true
+  target:
+    description: 'Path of target file storing the conversion result'
+    required: true
+  odd2odd:
+    description: 'whether ODD expansion shall be performed'
+    required: true
+    default: 'yes'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
